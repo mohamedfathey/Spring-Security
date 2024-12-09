@@ -72,6 +72,4 @@ Spring Security is a framework for securing web applications. It handles:
 - Must be defined as a child of `<authentication-manager>`.
 
 ---
-
-This structure allows flexibility in managing authentication strategies, enabling seamless integration with various data sources like databases or LDAP.
-
+ 
