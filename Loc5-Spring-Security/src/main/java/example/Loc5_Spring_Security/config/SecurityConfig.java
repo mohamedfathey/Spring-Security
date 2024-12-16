@@ -23,8 +23,13 @@ public class SecurityConfig {
 //                403 not authority موجود ف الدتابيز بس ملهوش الصلاحهي دى
 //                .anyRequest().hasAnyAuthority("play","read")
 //                .anyRequest().access("isAuthenticated() and hasAuthority('play') ")
-                .requestMatchers("/demo").hasAuthority("read")
+
+                .requestMatchers("/demo").hasAuthority("user")
                 .anyRequest().authenticated()
+
+                .requestMatchers("/null").hasAuthority("pUser")
+                .anyRequest().authenticated()
+
 //                .requestMatchers("/null").hasAuthority("play")
 //                .anyRequest().authenticated()
                 .and().build();
@@ -37,13 +42,17 @@ public class SecurityConfig {
 
         var u1 = User.withUsername("mhmd").
                 password(encoder().encode("123"))
-                .authorities("read").build();
+                .authorities("pUser").build();
+
         var u2 = User.withUsername("saif").
                 password(encoder().encode("456"))
-                .authorities("play").build();
+                .authorities("user").build();
+
         var u3 = User.withUsername("khalid").
                 password(encoder().encode("789"))
                 .authorities("manager").build();
+
+
 //        .roles("ADMIN")  == .authorities("ROLE_ADMIN")
 //        uds.createUser(u1);
 //        uds.createUser(u2);
